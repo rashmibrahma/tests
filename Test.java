@@ -3,8 +3,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-
-public class Test {
+// RUN THIS CLASS WITH:
+// javac Test.java; java -ea Test
+class Test {
     public static void main(String[] args) {
         List<Node> graph1 = new ArrayList<>();
         for (int i=0; i<4; i++) {
@@ -14,8 +15,15 @@ public class Test {
         graph1.get(1).neighbours.addAll(Arrays.asList(graph1.get(0), graph1.get(3)));
         graph1.get(3).neighbours.addAll(Arrays.asList(graph1.get(0), graph1.get(1)));
 
+        System.out.println("RUNNING TEST 1");
         dfs(graph1.get(0));
-        assert graph1.get(0).isVisited && graph1.get(1).isVisited && graph1.get(3).isVisited && !graph1.get(2).isVisited;
+        boolean allCorrect = graph1.get(0).isVisited && graph1.get(1).isVisited && graph1.get(3).isVisited && !graph1.get(2).isVisited;
+        try {
+            System.out.println(allCorrect);
+            assert (allCorrect);
+        } catch (AssertionError error) {
+            System.out.println("TEST 1 FAIL");
+        }
 
         List<Node> graph2 = new ArrayList<>();
         for (int i=0; i<4; i++) {
@@ -26,8 +34,15 @@ public class Test {
         graph2.get(2).neighbours.addAll(Collections.singletonList(graph2.get(0)));
         graph2.get(2).neighbours.addAll(Collections.singletonList(graph2.get(1)));
 
+        System.out.println("RUNNING TEST 2");
         dfs(graph2.get(0));
-        assert graph2.get(0).isVisited && graph2.get(1).isVisited && graph2.get(3).isVisited && graph2.get(2).isVisited;
+        allCorrect = graph2.get(0).isVisited && graph2.get(1).isVisited && graph2.get(3).isVisited && graph2.get(2).isVisited;
+        try {
+            System.out.println(allCorrect);
+            assert (allCorrect);
+        } catch (AssertionError error) {
+            System.out.println("TEST 2 FAIL");
+        }
     }
 
     static void dfs(Node node) {
