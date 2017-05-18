@@ -1,0 +1,15 @@
+2 objects --> Home, Box
+Home contains a function OnReceive(Box box, Home senderHome) and returns a Box. 
+Box contains the names of the people in the village
+Sarpanch home has the box and it contains the name "Sarpanch" and Sarpanch's neighbour is "Home A". 
+Sarpanch is trying to conduct a census of all the villagers. The villagers need the instructions on how to pass the box around and then eventually give it back to him.
+
+Instructions:
+1. Once you receive the box, write your name to the census list. 
+2. If you don't have any neighbours, then give the box back to the person who gave it to you.
+3. If you have neighbours, then make a list of them and if their names are not in the box, give them the box one at a time.
+4. If you have neighbours, and all of them have their names in the box, then give the box back to the person who gave it to you. 
+
+Test cases:
+1. Triangle --> 3 nodes
+2. Tree --> 3 nodes
